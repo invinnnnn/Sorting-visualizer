@@ -5,8 +5,19 @@
 }
 
 :root{
-    --bg-color: #151b23;
+    --bg-color: #0d1117;
+    --main-text: #ffffff;
     --bar-color: hsl(227 70% 43.9%);
+    --btn-bg: #212830;
+    --btn-border: #30363d;
+    --btn-text: #adbac7;
+    --btn-hover-bg: #30363d;
+    --btn-hover-border: #768390;
+    --btn-hover-text: #ffffff;
+    --accent-bg: #238636;
+    --accent-hover-bg: #2ea043;
+    --compare-color: #ff4d4d;
+    --min-color: #a371f7;
 }
 
 body{
@@ -45,7 +56,35 @@ button{
     font-weight: 600;
     cursor: pointer;
     padding: 0.6rem 1.2rem;
-    border-radius: 4px;
+    border-radius: 6px;
+    border: 1px solid var(--btn-border);
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--btn-hover-bg);
+    border-color: var(--btn-hover-border);
+    color: var(--btn-hover-text);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+#generate-array {
+    background-color: var(--accent-bg);
+    color: var(--main-text);
+    border: none;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+#generate-array:hover {
+    background-color: var(--accent-hover-bg);
 }
 
 .array{
@@ -63,4 +102,6 @@ button{
     max-width: 1.6em;
     min-width: 0.125em;
     background: var(--bar-color);
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
 }
