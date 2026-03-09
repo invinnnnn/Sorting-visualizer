@@ -26,7 +26,7 @@ function renderBars(){
 
     bar.className = "bar";
 
-    bar.style.height = numbers[i] + "px"
+    bar.style.height = numbers[i] + "px";
 
     arrayContainer.appendChild(bar);
     } 
