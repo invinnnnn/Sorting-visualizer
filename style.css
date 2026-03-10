@@ -75,6 +75,11 @@ button:active {
     transform: translateY(0);
 }
 
+.algorithms button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 #generate-array {
     background-color: var(--accent-bg);
     color: var(--main-text);
@@ -104,4 +109,10 @@ button:active {
     background: var(--bar-color);
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
+}
+
+.algorithms{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }

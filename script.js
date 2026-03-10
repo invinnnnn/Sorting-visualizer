@@ -8,6 +8,8 @@ const arrayContainer = document.getElementById("array");
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+let isSorted = false;
+let isSorting = false;
 let numbers = [];
 
 function generateRandomArray(){
@@ -30,6 +32,21 @@ function renderBars(){
 
     arrayContainer.appendChild(bar);
     } 
+}
+
+async function runSort(sortFunction){
+    if (isSorting || isSorted) return;
+
+    isSorting = true;
+    disableButtons();
+    generateBtn.textContent = "Sorting...";
+
+    await sortFunction();
+
+    enableButtons();
+    generateBtn.textContent = "Generate array";
+    isSorting = false;
+    isSorted = true;
 }
 
 async function bubbleSort() {
@@ -260,13 +277,25 @@ generateBtn.addEventListener("click", function(){
     numbers = [];
     generateRandomArray();
     renderBars();
+    isSorted = false;
 });
 
-bubbleBtn.addEventListener("click", bubbleSort);
-selectionBtn.addEventListener("click", selectionSort);
-insertionBtn.addEventListener("click", insertionSort);
-mergeBtn.addEventListener("click", startMergeSort);
-quickBtn.addEventListener("click", startQuickSort);
+function disableButtons(){
+    document.querySelectorAll("main button")
+    .forEach(btn => btn.disabled = true);
+}
+
+function enableButtons(){
+    document.querySelectorAll("main button")
+    .forEach(btn => btn.disabled = false);
+}
+
+bubbleBtn.addEventListener("click", () => runSort(bubbleSort));
+selectionBtn.addEventListener("click", () => runSort(selectionSort));
+insertionBtn.addEventListener("click", () => runSort(insertionSort));
+mergeBtn.addEventListener("click", () => runSort(startMergeSort));
+quickBtn.addEventListener("click", () => runSort(startQuickSort));
+
 
 generateRandomArray();
 renderBars();
